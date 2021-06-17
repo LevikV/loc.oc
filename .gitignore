@@ -1,20 +1,19 @@
 /image/cache/
 .htaccess
 /config.php
-admin/config.php
+/admin/config.php
 
 !index.html
 
-download/
-image/data/
-image/cache/
-system/cache/
-system/logs/
+/download/
+/image/data/
+/system/cache/
+/system/logs/
 
-system/storage/
+/system/storage/
 
 # vQmod log files
-vqmod/logs/*
+/vqmod/logs/*
 # vQmod cache files
 vqmod/vqcache/*
 vqmod/checked.cache
@@ -28,6 +27,6 @@ vqmod/mods.cache
 *.rar
 *.scss
 *.less
-catalog/view/javascript/**/??.js
-admin/view/javascript/**/??.js
-admin/view/javascript/**/lang/*.js
+/catalog/view/javascript/**/??.js
+/admin/view/javascript/**/??.js
+/admin/view/javascript/**/lang/*.js
