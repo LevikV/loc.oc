@@ -1,0 +1,33 @@
+/image/cache/
+.htaccess
+/config.php
+admin/config.php
+
+!index.html
+
+download/
+image/data/
+image/cache/
+system/cache/
+system/logs/
+
+system/storage/
+
+# vQmod log files
+vqmod/logs/*
+# vQmod cache files
+vqmod/vqcache/*
+vqmod/checked.cache
+vqmod/mods.cache
+
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.zip
+*.rar
+*.scss
+*.less
+catalog/view/javascript/**/??.js
+admin/view/javascript/**/??.js
+admin/view/javascript/**/lang/*.js
