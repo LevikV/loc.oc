@@ -1,1 +1,17 @@
-{{ my_title }}
+<ul class="main-menu">
+    {% for item in categories_tree %}
+        <li>
+            {% if not item.parent_id is null  %}
+                {% set i_span = '<i class="child"></i>' %}
+            {% else %}
+                {% set i_span = '<span class="parent"></span>' %}
+            {% endif %}
+
+            <a href="{{ item.href }}">{{ i_span|raw }} {{ item.name }}</a>
+            {% if not item.childs is null %}
+                {{ include(_self, {categories_tree: item.childs}) }}
+            {% endif %}
+        </li>
+        {% set _class = 'nav child_menu' %}
+    {% endfor %}
+</ul>

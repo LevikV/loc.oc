@@ -9,7 +9,8 @@ class ControllerExtensionModuleTreeCats extends Controller {
 		$this->load->language('extension/module/tree_cats');
 
 		$data['my_title'] = $this->language->get('heading_title');
-        //Получаем ID категории
+
+		//Получаем ID категории
         if (isset($this->request->get['path'])) {
             $parts = explode('_', (string)$this->request->get['path']);
         } else {
@@ -26,10 +27,16 @@ class ControllerExtensionModuleTreeCats extends Controller {
 
         $data['categories'] = array();
 
+        //Получаем все категории одним массивом
         $categories = $this->model_catalog_tree_cats->getTreeCats();
+        //Получаем URL для каждой категории
+        foreach ($categories as $id => $category) {
+            $categories[$id]['href'] = $this->url->link('product/category', 'path=' . $category['category_id']);
+        }
+        //Получаем дерево категории
+        $data['categories_tree'] = $this->model_catalog_tree_cats->getMapTree($categories);
 
-
-        $this->debug($categories);
+        $this->debug($data['categories_tree']);
 
 
         return $this->load->view('extension/module/tree_cats', $data);
