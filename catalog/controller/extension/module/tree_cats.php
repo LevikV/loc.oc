@@ -7,8 +7,13 @@ class ControllerExtensionModuleTreeCats extends Controller {
 
     public function index() {
 		$this->load->language('extension/module/tree_cats');
-
 		$data['my_title'] = $this->language->get('heading_title');
+
+		//Подключаем аккордион меню
+        $this->document->addScript('catalog/view/javascript/jquery-vertical-accordion-menu/js/jquery.cookie.js');
+        $this->document->addScript('catalog/view/javascript/jquery-vertical-accordion-menu/js/jquery.hoverIntent.minified.js');
+        $this->document->addScript('catalog/view/javascript/jquery-vertical-accordion-menu/js/jquery.dcjqaccordion.2.7.min.js');
+
 
 		//Получаем ID категории
         if (isset($this->request->get['path'])) {
@@ -36,8 +41,10 @@ class ControllerExtensionModuleTreeCats extends Controller {
         //Получаем дерево категории
         $data['categories_tree'] = $this->model_catalog_tree_cats->getMapTree($categories);
 
-        $this->debug($data['categories_tree']);
+        //$this->debug($data['categories_tree']);
 
+        $data['_class'] = 'my_cats';
+        $data['_id'] = 'accordion';
 
         return $this->load->view('extension/module/tree_cats', $data);
 	}
